@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Movie Library</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+  </head>
+  <body>
+    <!-- Login Section -->
+    <section id="login-section" class="auth-section">
+      <div class="auth-container">
+        <h2>Login to My Movie Library</h2>
+        <form id="login-form">
+          <input
+            type="text"
+            id="login-username"
+            placeholder="Username"
+            required
+          />
+          <input
+            type="password"
+            id="login-password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Login</button>
+          <p id="login-message"></p>
+        </form>
+        <p>
+          Don't have an account?
+          <a href="#" onclick="showRegister()">Register here</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register-section" class="auth-section hidden">
+      <div class="auth-container">
+        <h2>Register for My Movie Library</h2>
+        <form id="register-form">
+          <input
+            type="text"
+            id="register-username"
+            placeholder="Username"
+            required
+          />
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Register</button>
+          <p id="register-message" style="color: red"></p>
+        </form>
+        <p>
+          Already have an account?
+          <a href="#" onclick="showLogin()">Login here</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Movie Library Section -->
+    <section id="library-section" class="library-section hidden">
+      <h2>Welcome to Your Movie Library</h2>
+
+      <!-- Status Message -->
+      <div id="status-message"></div>
+
+      <!-- Filter Options -->
+      <div id="filter-form-container">
+        <h3>Filter Movies</h3>
+        <div class="filters">
+          <select id="filter-watched">
+            <option value="all">All</option>
+            <option value="watched">Watched</option>
+            <option value="not-watched">Not Watched</option>
+          </select>
+          <select id="movie-genre">
+            <option value="All Genres">All Genres</option>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="Biography">Biography</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Crime">Crime</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Drama">Drama</option>
+            <option value="Family">Family</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Historical">Historical</option>
+            <option value="Horror">Horror</option>
+            <option value="Musical">Musical</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Thriller">Thriller</option>
+            <option value="War">War</option>
+            <option value="Western">Western</option>
+          </select>
+
+          <select id="filter-rating">
+            <option value="all">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4 Stars & Up</option>
+            <option value="3">3 Stars & Up</option>
+            <option value="2">2 Stars & Up</option>
+            <option value="1">1 Star & Up</option>
+          </select>
+          <button onclick="applyFilters()">Apply Filters</button>
+        </div>
+      </div>
+
+      <!-- Add New Movie Button -->
+      <!-- Add New Movie Button -->
+      <button id="add-movie-button" onclick="toggleAddMovieForm()">
+        Add Movie
+      </button>
+
+      <!-- Add New Movie Form (Hidden by Default) -->
+      <div id="movie-form-container" class="hidden">
+        <h3>Add a New Movie</h3>
+        <form id="movie-form">
+          <input type="text" id="movie-title" placeholder="Title" required />
+
+          <!-- Genre selection updated for multiple selection -->
+          <select id="movie-genre">
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="Biography">Biography</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Crime">Crime</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Drama">Drama</option>
+            <option value="Family">Family</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Historical">Historical</option>
+            <option value="Horror">Horror</option>
+            <option value="Musical">Musical</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Thriller">Thriller</option>
+            <option value="War">War</option>
+            <option value="Western">Western</option>
+          </select>
+
+          <input
+            type="text"
+            id="movie-image-url"
+            placeholder="Image URL (optional)"
+          />
+
+          <!-- Watched checkbox styling improvement -->
+          <label for="movie-watched">
+            <input type="checkbox" id="movie-watched" /> Watched
+          </label>
+
+          <!-- Star rating with clickable stars -->
+          <div id="star-rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+
+          <button type="submit" style="margin-bottom: 15px">Add Movie</button>
+        </form>
+      </div>
+      <!-- Status message container -->
+      <div id="status-message" class="status-message"></div>
+
+      <!-- Movie Display Grid -->
+      <div class="movie-grid" id="movie-grid">
+        <!-- Movie cards will be dynamically added here -->
+      </div>
+
+      <!-- Movie Display Grid -->
+      <div class="movie-grid" id="movie-grid">
+        <!-- Movie cards will be dynamically added here -->
+      </div>
+
+      <button onclick="logout()">Logout</button>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+      AOS.init({ duration: 800, easing: "ease-in-out" });
+    </script>
+  </body>
+</html>
