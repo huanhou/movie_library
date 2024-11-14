@@ -68,101 +68,35 @@
     <!-- Movie Library Section -->
     <section id="library-section" class="library-section hidden">
       <h2>Welcome to Your Movie Library</h2>
+      <div id="status-message" class="status-message"></div>
 
-      <!-- Status Message -->
-      <div id="status-message"></div>
-
-      <!-- Filter Options -->
-      <div id="filter-form-container">
-        <h3>Filter Movies</h3>
-        <div class="filters">
-          <select id="filter-watched">
-            <option value="all">All</option>
-            <option value="watched">Watched</option>
-            <option value="not-watched">Not Watched</option>
-          </select>
-          <select id="movie-genre">
-            <option value="All Genres">All Genres</option>
-            <option value="Action">Action</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Animation">Animation</option>
-            <option value="Biography">Biography</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Crime">Crime</option>
-            <option value="Documentary">Documentary</option>
-            <option value="Drama">Drama</option>
-            <option value="Family">Family</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Historical">Historical</option>
-            <option value="Horror">Horror</option>
-            <option value="Musical">Musical</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Romance">Romance</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Thriller">Thriller</option>
-            <option value="War">War</option>
-            <option value="Western">Western</option>
-          </select>
-
-          <select id="filter-rating">
-            <option value="all">All Ratings</option>
-            <option value="5">5 Stars</option>
-            <option value="4">4 Stars & Up</option>
-            <option value="3">3 Stars & Up</option>
-            <option value="2">2 Stars & Up</option>
-            <option value="1">1 Star & Up</option>
-          </select>
-          <button onclick="applyFilters()">Apply Filters</button>
-        </div>
-      </div>
-
-      <!-- Add New Movie Button -->
-      <!-- Add New Movie Button -->
+      <!-- Add New Movie Form -->
       <button id="add-movie-button" onclick="toggleAddMovieForm()">
         Add Movie
       </button>
-
-      <!-- Add New Movie Form (Hidden by Default) -->
       <div id="movie-form-container" class="hidden">
         <h3>Add a New Movie</h3>
         <form id="movie-form">
-          <input type="text" id="movie-title" placeholder="Title" required />
-
-          <!-- Genre selection updated for multiple selection -->
-          <select id="movie-genre">
-            <option value="Action">Action</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Animation">Animation</option>
-            <option value="Biography">Biography</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Crime">Crime</option>
-            <option value="Documentary">Documentary</option>
-            <option value="Drama">Drama</option>
-            <option value="Family">Family</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Historical">Historical</option>
-            <option value="Horror">Horror</option>
-            <option value="Musical">Musical</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Romance">Romance</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Thriller">Thriller</option>
-            <option value="War">War</option>
-            <option value="Western">Western</option>
+          <select id="movie-title">
+            <option value="">Select a Movie</option>
+            <option value="The Shawshank Redemption">
+              The Shawshank Redemption
+            </option>
+            <option value="Forrest Gump">Forrest Gump</option>
+            <option value="Inception">Inception</option>
+            <option value="The Pursuit of Happyness">
+              The Pursuit of Happyness
+            </option>
+            <option value="The Green Mile">The Green Mile</option>
+            <option value="A Beautiful Mind">A Beautiful Mind</option>
+            <option value="Life Is Beautiful">Life Is Beautiful</option>
+            <option value="Interstellar">Interstellar</option>
+            <option value="The Truman Show">The Truman Show</option>
+            <option value="Good Will Hunting">Good Will Hunting</option>
           </select>
-
-          <input
-            type="text"
-            id="movie-image-url"
-            placeholder="Image URL (optional)"
-          />
-
-          <!-- Watched checkbox styling improvement -->
           <label for="movie-watched">
             <input type="checkbox" id="movie-watched" /> Watched
           </label>
-
-          <!-- Star rating with clickable stars -->
           <div id="star-rating">
             <span class="star" data-value="1">★</span>
             <span class="star" data-value="2">★</span>
@@ -170,23 +104,12 @@
             <span class="star" data-value="4">★</span>
             <span class="star" data-value="5">★</span>
           </div>
-
-          <button type="submit" style="margin-bottom: 15px">Add Movie</button>
+          <button type="submit">Add Movie</button>
         </form>
       </div>
-      <!-- Status message container -->
-      <div id="status-message" class="status-message"></div>
 
-      <!-- Movie Display Grid -->
-      <div class="movie-grid" id="movie-grid">
-        <!-- Movie cards will be dynamically added here -->
-      </div>
-
-      <!-- Movie Display Grid -->
-      <div class="movie-grid" id="movie-grid">
-        <!-- Movie cards will be dynamically added here -->
-      </div>
-
+      <!-- Movie Grid for User Library -->
+      <div class="movie-grid" id="movie-grid"></div>
       <button onclick="logout()">Logout</button>
     </section>
 
